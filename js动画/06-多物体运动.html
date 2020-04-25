@@ -20,11 +20,9 @@
     </style>
 </head>
 <body>
-    <button id="btn">点我</button>
     <div id="box1"></div>
     <div id="box2"></div>
     <script>
-        // const btn = document.getElementById('btn');
         const box1 = document.getElementById('box1');
         const box2 = document.getElementById('box2');
         box1.onmouseover = function () {
@@ -44,7 +42,7 @@
         function startAnimation(obj,end) {
             clearInterval(obj.timer);
             obj.timer = setInterval(function () {
-                if(end === obj.offsetWidth){
+                if(end === obj.offsetWidth){  // offsetWidth: 盒子的width+border
                     clearInterval(obj.timer);
                     return;
                 }

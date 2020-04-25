@@ -33,8 +33,10 @@
         <span>拉开</span>
     </div>
     <script>
+        // 1.获取事件元素
         const pull = document.querySelector('#box span');
         const box = document.querySelector('#box');
+        // 2.添加事件  onmouseover鼠标悬浮盒子事件    onmouseout鼠标离开盒子事件
         pull.onmouseover = function () {
             box.style.left = 0 + 'px'; 
         }

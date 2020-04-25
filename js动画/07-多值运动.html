@@ -38,14 +38,13 @@
             startAnimation(box2,"opacity",100);
         }
         let speed=0;
-        // 多物体运动时，timer绑在对象上面
+
         function startAnimation(obj,attr,end) {
             clearInterval(obj.timer);
             obj.timer = setInterval(function () {
                 let cur = 0;
                 if(attr === 'opacity'){
-                    cur = Math.round(parseFloat(getStyle(obj,attr)) * 100); 
-                    // console.log(getStyle(obj,attr));
+                    cur = Math.round(parseFloat(getStyle(obj,attr)) * 100);  // 透明度默认为0到1之间，将透明度获取的值*100  
                 }else{
                     cur = parseInt(getStyle(obj,attr));
                 }
@@ -56,7 +55,7 @@
                 // 运动
                 speed = end > cur ? 10:-10;
                 if(attr === 'opacity'){
-                    // console.log(cur + speed);
+                    // 设置透明度
                     obj.style[attr] = (cur + speed) / 100;
                     obj.style['filter'] = `alpha(opacity:${cur + speed})`;
                 }else{
@@ -65,7 +64,7 @@
                 
             },30)
         }
-        // 获取属性
+        // 获取属性  因为使用obj.style获取的属性仅仅为内嵌的值，获取不到行内样式和外部引用的值
         function getStyle(obj,attr) { 
             if(obj.currentStyle){
                 // 针对IE浏览器

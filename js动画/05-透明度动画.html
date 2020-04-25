@@ -26,21 +26,24 @@
         box.onmouseout = function () {
             opacityAnimation(this,30);
         }
-        let timer = null,speed = 0,alpha = 30;
+        let timer = null,speed = 0,alpha = 30; // alpha:透明度数值
         function opacityAnimation(obj,end) {
+            // 1.清除原定时器
             clearInterval(timer);
+            // 2.设置新定时器
             timer = setInterval(function () {
+                // 3.设置速度数值
                 speed = (end - alpha) / 20;
                 speed = end > alpha ? Math.ceil(speed):Math.floor(speed);
-                // 边界处理
+                // 3.边界处理
                 if(alpha === end){
                     clearInterval(timer);
                     return ;
                 }
-                // 运动
+                // 4.运动 设置属性
                 alpha += speed
-                obj.style.opacity = alpha / 100;
-                obj.style.filter = `alpha(opacity:${alpha})`;
+                obj.style.opacity = alpha / 100;  //用于一般浏览器 
+                obj.style.filter = `alpha(opacity:${alpha})`;  //用于ie8及以下浏览器
             },30)
 
         }

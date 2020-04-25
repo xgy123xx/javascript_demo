@@ -33,8 +33,6 @@ function startAnimation(obj,json,fn) {
                 continue;
             }
             console.log(cur);
-            // 原代码
-            // speed = end > cur ? 10:-10;
             // 设置速度：判断结束值end和当前值cur相差值小于speed速度
             if(end > cur){ 
                 // end=100 cur=92   speed=10
