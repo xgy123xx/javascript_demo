@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .app{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- html事件处理程序 -->
+    <div class="app" onclick="this.innerHTML += event.type">
+
+    </div>
+    <div class="app" onclick="handler();">
+
+    </div>
+    <div class="app" id="box" >
+
+    </div>
+    <div class="app" id="box2" >
+
+    </div>
+    <div class="app" id="box3" >
+
+    </div>
+    <script>
+        function handler() {
+            console.log("event");
+        }
+        // DOM0级事件
+        var Odiv = document.getElementById('box');
+        Odiv.onclick = function (e) {
+            e.target.style.backgroundColor = 'blue';
+        }
+        // DOM2级事件
+        var Odiv1 = document.getElementById('box2');
+        Odiv1.addEventListener('click',function () { 
+            console.log(this);
+
+        },false)
+        // IE事件
+        var Odiv3 = document.getElementById('box3');
+        Odiv3.attachEvent('onclick',function () {
+            console.log('111');
+            console.log(this);
+        })
+
+
+
+
+    </script>
+</body>
+</html>

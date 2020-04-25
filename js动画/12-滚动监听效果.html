@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        ul{
+            list-style: none;
+        }
+        a{
+            text-decoration: none;
+        }
+
+        html,body{
+            width: 100%;
+            height: 100%;
+        }
+        #container{
+            width: 1200px;
+            margin: 0 auto;
+            height: 100%;
+        }
+        #container div{
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            color: #fff;
+            font-size: 30px;
+        }
+
+        .aside{
+            position: fixed;
+            width: 40px;
+            right: 20px;
+            top: 300px;
+            font-size: 16px;
+            font-weight: 700;
+            text-align: center;
+        }
+        .aside li{
+            height: 50px;
+            border-bottom: 1px solid #ddd;
+            
+        }
+        .aside li a{
+            color: peru;
+        }
+        .aside li.current{
+            background-color: peru;
+        }
+        .aside li.current a{
+            color: #fff;
+        }
+    </style>
+</head>
+<body>
+    <div id="container">
+        <div class="current">爱逛好货</div>
+        <div>好店直播</div>
+        <div>品质特色</div>
+        <div>实惠热卖</div>
+    </div>
+    <ul class="aside" id="aside">
+        <li class="current"><a href="javascript:void(0);">爱逛好货</a></li>
+        <li><a href="javascript:void(0);">好店直播</a></li>
+        <li><a href="javascript:void(0);">品质特色</a></li>
+        <li><a href="javascript:void(0);">实惠热卖</a></li>
+    </ul>
+    <script src="./myAnimation2.js"></script>
+    <script>
+        // 获取对象
+        const aside = document.getElementById('aside');
+        const lis = aside.children;
+        const Odiv = document.getElementById("container");
+        const Divs = Odiv.children;
+
+        // 给盒子上色
+        colors = ['blue','purple','orange','green'];
+        [...Divs].forEach((element,i,arr)=>{
+            element.style.backgroundColor = colors[i];
+        });
+
+        // 设置侧边栏点击事件
+        let isClick = false;  // 点击触发滚动的标准
+        [...lis].forEach((element,i,arr) => {
+            element.onclick = function (){
+                arr.forEach(el=>{
+                el.className = "";
+                })
+                this.className = "current";
+                // document.documentElement.scrollTop = i * document.documentElement.clientHeight;
+                // 制作点击侧边栏，内容部分滚动相应位置的动画
+                isClick = true;
+                startAnimation(document.documentElement,{
+                    "scrollTop":i * document.documentElement.clientHeight
+                },function () {
+                    isClick = false;
+                  })
+            }
+        });
+
+        // 监听滚动  滚动到相应位置，侧边栏也会调整active
+        window.onscroll = function () {
+            // 如果用户不是因为点击侧边栏而触发的滚动
+            if(!isClick){
+                // 获取当前滚动值
+                let top = document.documentElement.scrollTop || document.body.scrollTop;
+                let i = Math.floor(top / document.documentElement.clientHeight);  // 计算索引
+                // 排他
+                [...lis].forEach(element=>element.className = "");
+                lis[i].className = "current";
+            }
+        }
+    </script>
+</body>
+</html>

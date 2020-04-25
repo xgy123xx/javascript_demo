@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="app2">hi!!!!</div>
+    </div>
+    <script>
+        var oDiv = document.getElementById('app');
+        // // 获取事件对象
+        // oDiv.onclick = function (e) {
+        //     // 方法一：通过传入的参数获取事件对象，ie8以下不支持
+        //     console.log("e=",e);
+        //     // 方法二：通过event对象
+        //     console.log('event',window.event);
+        //     // 兼容写法
+        //     var e = e || window.event;
+            
+        // }
+
+        // 获取事件对象的属性
+        oDiv.onclick = function (e) {
+            var e = e || window.event;
+            // target 获取 触发 事件的对象  ie8以下不支持  ie8支持srcElement
+            console.log(e.target);
+            console.log(e.srcElement);  
+            console.log(e.target === this);   // false
+            // currentTarget  获取 绑定 事件的对象  this对象指向
+            console.log(e.currentTarget);
+            console.log(e.currentTarget === this);  // true
+
+            // 兼容性写法
+            var target = e.target || e.srcElement;
+            console.log(target);
+        }
+    </script>
+</body>
+</html>

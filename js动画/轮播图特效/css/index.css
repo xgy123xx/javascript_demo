@@ -1,0 +1,69 @@
+*{
+    padding: 0;
+    margin: 0;
+}
+.slider{
+    width: 400px;
+    height: 500px;
+    margin: 100px auto;
+    position: relative;
+    overflow: hidden;
+}
+.slider_scroll {
+    position: relative;
+    width: 400px;
+    height: 500px;
+}
+.slider_main{
+    position: relative;
+    width: 400px;
+    height: 500px;
+}
+.slider_main .item{
+    width: 40px;
+    height: 500px;
+    position: absolute;
+}
+.slider_main .item img{
+    width: 400px;
+    height: 500px;
+}
+/* 索引部分 */
+.slider_index{
+    width: 400px;
+    height: 40px;
+    line-height: 40px;
+    text-align: center;
+    color:#fff;
+    font-weight: 700;
+    z-index: 20;
+    position: absolute;
+    bottom: 0;
+    background-color: rgba(0,0,0,.5);
+}
+.slider_index .slider_index_icon{
+    margin: 0 10px;
+    line-height: 40px;
+    cursor: pointer;
+}
+.slider_index .slider_index_icon.current{
+    color: red;
+}
+/* 下一张和上一张定位 */
+.slider_scroll>span{
+    position: absolute;
+    width: 30px;
+    height: 68px;
+    background: url(../images/icon-slides.png) no-repeat;
+    top: 50%;
+    margin-top: -34px;
+    cursor: pointer;
+}
+.slider_scroll span.next{
+    right: 0;
+    background-position: -46px 0;
+}
+.slider_scroll span.prev{
+    left: 0;
+    background-position: 0 0;
+}

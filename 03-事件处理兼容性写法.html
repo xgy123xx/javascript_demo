@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        var Odiv = document.getElementById('app');
+        addEvent(Odiv,'click',handler)
+        function addEvent(target,eventType,handler) {
+            
+            if(target.addEventListener){
+                // 兼容一般浏览器
+                target.addEventListener(eventType,handler,false);
+            }else{
+                // 兼容IE
+                target.attachEvent('on'+eventType,function () {
+                    handler.call(target);
+                })
+            }
+        }
+        function handler() {
+            console.log(this);
+        }
+
+    </script>
+</body>
+</html>

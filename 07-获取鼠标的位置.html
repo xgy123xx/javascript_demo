@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app {
+            width: 500px;
+            height: 1000px;
+            background-color: red;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="app"></div>
+    <script>
+        var Btn = document.getElementById('app');
+        Btn.onmousemove = function (e) {
+            
+            e = e || window.event; 
+            // clientX clientY  浏览器有效区域  以浏览器为坐标系 左上角为0
+            this.innerHTML = `clientX=${e.clientX} clientX=${e.clientY}  `
+            // offsetX offsetY 相对于盒子    以盒子为坐标系  左上角为0
+            this.innerHTML += `offsetX=${e.offsetX} offsetY=${e.offsetY}  `
+            // screenX screenY 相对于屏幕    以屏幕为坐标系
+            this.innerHTML += `screenX=${e.screenX} screenY=${e.screenY}  `
+            // pageX pageY 相对于页面    以网页为坐标系
+            this.innerHTML += `pageX=${e.pageX} pageY=${e.pageY}  `
+        }
+    </script>
+</body>
+
+</html>

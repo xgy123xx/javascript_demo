@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            opacity: 0.3;
+            filter: alpha(opacity:30);
+        }
+    </style>
+</head>
+<body>
+    <div id="box">
+
+    </div>
+    <script>
+        const box = document.getElementById('box');
+        box.onmouseover = function () {
+            opacityAnimation(this,100);
+        }
+        box.onmouseout = function () {
+            opacityAnimation(this,30);
+        }
+        let timer = null,speed = 0,alpha = 30;
+        function opacityAnimation(obj,end) {
+            clearInterval(timer);
+            timer = setInterval(function () {
+                speed = (end - alpha) / 20;
+                speed = end > alpha ? Math.ceil(speed):Math.floor(speed);
+                // 边界处理
+                if(alpha === end){
+                    clearInterval(timer);
+                    return ;
+                }
+                // 运动
+                alpha += speed
+                obj.style.opacity = alpha / 100;
+                obj.style.filter = `alpha(opacity:${alpha})`;
+            },30)
+
+        }
+    </script>
+</body>
+</html>

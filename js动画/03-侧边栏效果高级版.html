@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        #box {
+            width: 300px;
+            height: 100px;
+            position: relative;
+            background-color: blue;
+            left: -300px;
+        }
+
+        #box span {
+            width: 50px;
+            height: 100px;
+            left: 300px;
+            position: absolute;
+            background-color: #000000;
+            color: #ffffff;
+            text-align: center;
+            line-height: 100px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="box">
+        <span>拉开</span>
+    </div>
+    <script>
+        const pull = document.querySelector('#box span');
+        const box = document.querySelector('#box');
+        box.onmouseover = function () {
+            startAnimation(this,0);
+        }
+        box.onmouseout = function () {
+            startAnimation(this,-300);
+        }
+        let timer = null;
+        let speed = 0;
+        // obj代表动画对象  end 代表结束坐标
+        function startAnimation(obj, end) {
+            // 1.清除定时器
+            clearInterval(timer);
+            timer = setInterval(function () {
+                // 计算速度
+                speed = obj.offsetLeft > end ? -5 : 5;
+                // 2.结束条件
+                if (obj.offsetLeft == end) {
+                    clearInterval(timer);
+                    return;
+                }
+                // 3.执行动画
+                obj.style.left = obj.offsetLeft + speed + 'px';
+            }, 50)
+        }
+    </script>
+</body>
+
+</html>

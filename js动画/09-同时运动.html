@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script src="myAnimation2.js"></script>
+    <script>
+        const box1 = document.getElementById('box1');
+        const box2 = document.getElementById('box2');
+        // 链式运动
+        box1.onmouseover = function () {
+            startAnimation(box1,{
+                "width":500,
+                "height":800
+            });
+        }
+        box1.onmouseout = function () {
+            startAnimation(box1,{
+                "width":100,
+                "height":100
+            });
+        }
+        box2.onmouseover = function () {
+            startAnimation(box2,{
+                "opacity":30,
+                "width":600
+            });
+        }
+        box2.onmouseout = function () {
+            startAnimation(box2,{
+                "opacity":100,
+                "width":100
+            });
+        }
+    </script>
+</body>
+</html>

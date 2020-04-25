@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box {
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: absolute;
+        }
+    </style>
+</head>
+
+<body>
+    <h2>
+        匀速运动
+    </h2>
+    <button id="btn">按钮</button>
+    <div id="box">
+
+    </div>
+
+    <script>
+        var box = document.getElementById('box');
+        var btn = document.getElementById('btn');
+        console.log(box.style.left);
+        // 设置定时器  边界问题 定时器处理
+        let timer = null;
+        let max_val = 500;
+        let count = 0;
+        btn.onclick = function () {
+            // 1.清除定时器
+            clearInterval(timer);
+            // 3.设置定时器
+            timer = window.setInterval(function () {
+                // 2.判断边界
+                if (count >= max_val) {
+                    clearInterval(timer);
+                    return;
+                }
+                count += 1;
+                box.style.left = count + 'px';
+            }, 30)
+        }
+    </script>
+</body>
+
+</html>

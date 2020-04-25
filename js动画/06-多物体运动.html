@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #box1{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+            position: relative;
+        }
+        #box2{
+            width: 100px;
+            height: 100px;
+            background-color: blue;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <button id="btn">点我</button>
+    <div id="box1"></div>
+    <div id="box2"></div>
+    <script>
+        // const btn = document.getElementById('btn');
+        const box1 = document.getElementById('box1');
+        const box2 = document.getElementById('box2');
+        box1.onmouseover = function () {
+            startAnimation(box1,500);
+        }
+        box1.onmouseout = function () {
+            startAnimation(box1,100);
+        }
+        box2.onmouseover = function () {
+            startAnimation(box2,500);
+        }
+        box2.onmouseout = function () {
+            startAnimation(box2,100);
+        }
+        let speed=0;
+        // 多物体运动时，timer绑在对象上面
+        function startAnimation(obj,end) {
+            clearInterval(obj.timer);
+            obj.timer = setInterval(function () {
+                if(end === obj.offsetWidth){
+                    clearInterval(obj.timer);
+                    return;
+                }
+                // 运动
+                speed = end > obj.offsetWidth ? 10:-10;
+                obj.style.width = obj.offsetWidth + speed + 'px';
+            },30)
+        }
+    </script>
+</body>
+</html>

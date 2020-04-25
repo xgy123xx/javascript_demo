@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 100px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app"><a href="#" id="btn">你好</a></div>
+    <script>
+        // var Odiv = document.getElementById('app');
+        // Odiv.onclick = function (e) {
+        //     //  e.bubbles  返回当前事件是否冒泡  只读
+        //     console.log(e.bubbles);
+        //     // e.cancelBubble  默认false  true时会取消冒泡 兼容ie8以下
+        //     console.log(e.cancelBubble);
+        //     // 可以取消冒泡
+        //     return false;
+        // }
+        // 取消事件冒泡 兼容性写法
+        // var Btn = document.getElementById('btn');
+        // Btn.onclick = function (e) {
+        //     var e = e || window.event;
+        //     if(e.stopPropagation){
+        //         e.stopPropagation();
+        //     }else{
+        //         e.cancelBubble = true;
+        //     }
+        //     this.innerHTML = 'ok';
+        // }
+        // // 事件流
+        // var Btn = document.getElementById('btn');
+        // // 目标阶段   
+        // Btn.onclick = function (e) {
+        //     e = e || window.event;
+        //     console.log(e.eventPhase);  // 2
+        // }
+        // // 1 捕获阶段
+        // document.body.addEventListener('click',function (e) {
+        //     e = e || window.event;
+        //     console.log(e.eventPhase);  // 1
+        // },false);
+        // // 3 冒泡阶段
+        // document.body.addEventListener('click',function (e) {
+        //     e = e || window.event;
+        //     console.log(e.eventPhase);  // 3
+        // },true);
+        // 取消默认事件
+        var Btn = document.getElementById('btn');
+        Btn.onclick = function (e) {
+            e = e || window.event;
+            // 方法一：preventDefault  ie8以下不支持
+            if(e.preventDefault){
+                e.preventDefault()
+            }else{  // 方法二：returnValue  只兼容ie8以下浏览器
+                e.returnValue = false;
+            }
+            // return false;  //方法三：兼容所有浏览器
+        }
+
+    </script>
+</body>
+</html>

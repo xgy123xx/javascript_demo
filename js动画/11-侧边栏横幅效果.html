@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #aside{
+            position: absolute;
+            top: 200px;
+            left: 0;
+            width: 300px;
+        }
+        img{
+            width: 100%;
+        }
+    </style>
+</head>
+<body style="height:5000px">
+    <div id="aside">
+        <img src="./aside.png" alt="">
+    </div>
+    <script src="./myAnimation2.js"></script>
+    <script>
+        window.onload = function () {
+            const aside = document.getElementById('aside');
+            const aside_top = aside.offsetTop;  // 距离浏览器顶部的位置
+            window.onscroll = function () {
+                // 页面滚动的距离
+                let docScroll = document.documentElement.scrollTop || document.body.scrollTop;
+                // 设置动画
+                startAnimation(aside,{
+                    'top':aside_top+docScroll
+                })
+            }
+
+        }
+    </script>
+</body>
+</html>

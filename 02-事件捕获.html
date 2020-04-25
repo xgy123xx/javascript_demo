@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        #app{
+            width: 500px;
+            height: 100px;
+            background-color: red;
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+
+    </div>
+    <script>
+        const Odiv = document.getElementById('app');
+        Odiv.addEventListener('click',function () {
+            Odiv.innerHTML += 'div  ';
+        },true);
+        document.body.addEventListener('click',function () {
+            Odiv.innerHTML += 'div  ';
+        },true);
+        document.documentElement.addEventListener('click',function () {
+            Odiv.innerHTML += 'documentElement  ';
+        },true);
+        document.addEventListener('click',function () {
+            Odiv.innerHTML += 'document  ';
+        },true);
+    </script>
+</body>
+</html>
